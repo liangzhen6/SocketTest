@@ -10,10 +10,13 @@
 
 @interface Socket : NSObject
 
-@property(nonatomic,copy)void(^messageBlack)(NSDictionary *message);
+@property(nonatomic,copy)void(^messageBlack)(NSData *message);
 
 + (id)shareSocket;
 
-+ (id)shareSocketWithHost:(NSString *)host port:(int)port messageBlack:(void(^)(NSDictionary *message))messageBlack;
++ (id)shareSocketWithHost:(NSString *)host port:(int)port messageBlack:(void(^)(NSData *message))messageBlack;
+
+
+- (void)sentMessage:(NSString *)string;
 
 @end

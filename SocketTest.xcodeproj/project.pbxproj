@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A3F886E23AFF86595DB51F3 /* libPods-SocketTestUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B87F3D9A6F1122131088821 /* libPods-SocketTestUITests.a */; };
+		32F37A151E616F0A007F8FD8 /* MyTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F37A141E616F0A007F8FD8 /* MyTools.m */; };
 		63D60268A619EAA53122087F /* libPods-SocketTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53480EF7AB99668A6805C322 /* libPods-SocketTest.a */; };
 		DCF2C1E3B6F2BA168FA251A8 /* libPods-SocketTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CCD25CA4FB6DB5D67B90CE /* libPods-SocketTestTests.a */; };
 		FA8F09EF1E601E2D00AD3A3E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F09EE1E601E2D00AD3A3E /* main.m */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		0C6E57610DBC2D424A174090 /* Pods-SocketTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketTestTests/Pods-SocketTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		32F37A131E616F0A007F8FD8 /* MyTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTools.h; sourceTree = "<group>"; };
+		32F37A141E616F0A007F8FD8 /* MyTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTools.m; sourceTree = "<group>"; };
 		38CCD25CA4FB6DB5D67B90CE /* libPods-SocketTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53480EF7AB99668A6805C322 /* libPods-SocketTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61CFC3D2E7A4B35F007B08E3 /* Pods-SocketTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketTestUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketTestUITests/Pods-SocketTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				FA8F09F11E601E2D00AD3A3E /* AppDelegate.m */,
 				FA8F0A201E602E2200AD3A3E /* NetWorkIP.h */,
 				FA8F0A211E602E2200AD3A3E /* NetWorkIP.m */,
+				32F37A131E616F0A007F8FD8 /* MyTools.h */,
+				32F37A141E616F0A007F8FD8 /* MyTools.m */,
 				FA8F0A231E602EC900AD3A3E /* Socket.h */,
 				FA8F0A241E602EC900AD3A3E /* Socket.m */,
 				FA8F09F31E601E2D00AD3A3E /* ViewController.h */,
@@ -266,7 +271,7 @@
 				TargetAttributes = {
 					FA8F09E91E601E2D00AD3A3E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = G4E6298X77;
+						DevelopmentTeam = R6M88U6UD2;
 						ProvisioningStyle = Automatic;
 					};
 					FA8F0A021E601E2D00AD3A3E = {
@@ -476,6 +481,7 @@
 				FA8F0A251E602EC900AD3A3E /* Socket.m in Sources */,
 				FA8F09F51E601E2D00AD3A3E /* ViewController.m in Sources */,
 				FA8F0A221E602E2200AD3A3E /* NetWorkIP.m in Sources */,
+				32F37A151E616F0A007F8FD8 /* MyTools.m in Sources */,
 				FA8F09F21E601E2D00AD3A3E /* AppDelegate.m in Sources */,
 				FA8F09EF1E601E2D00AD3A3E /* main.m in Sources */,
 			);
@@ -627,7 +633,7 @@
 			baseConfigurationReference = B8F9384899BEF0C2EEE6B434 /* Pods-SocketTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = G4E6298X77;
+				DEVELOPMENT_TEAM = R6M88U6UD2;
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -641,7 +647,7 @@
 			baseConfigurationReference = 9368149E24D62E7E42A18A64 /* Pods-SocketTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = G4E6298X77;
+				DEVELOPMENT_TEAM = R6M88U6UD2;
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
