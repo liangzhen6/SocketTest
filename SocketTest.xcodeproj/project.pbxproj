@@ -115,6 +115,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		329649041E61C8D60097F288 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
 		422E7456F103BBC53C8822DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +157,7 @@
 		FA8F09EC1E601E2D00AD3A3E /* SocketTest */ = {
 			isa = PBXGroup;
 			children = (
+				329649041E61C8D60097F288 /* Library */,
 				FA8F09F01E601E2D00AD3A3E /* AppDelegate.h */,
 				FA8F09F11E601E2D00AD3A3E /* AppDelegate.m */,
 				FA8F0A201E602E2200AD3A3E /* NetWorkIP.h */,
@@ -633,11 +641,12 @@
 			baseConfigurationReference = B8F9384899BEF0C2EEE6B434 /* Pods-SocketTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = R6M88U6UD2;
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SH.SocketTest;
+				PRODUCT_BUNDLE_IDENTIFIER = SH.SocketTest9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -647,11 +656,12 @@
 			baseConfigurationReference = 9368149E24D62E7E42A18A64 /* Pods-SocketTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = R6M88U6UD2;
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SH.SocketTest;
+				PRODUCT_BUNDLE_IDENTIFIER = SH.SocketTest9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

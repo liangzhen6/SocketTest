@@ -13,4 +13,7 @@
 + (NSString *)switchSexadecimalNumberStringWithData:(NSData *)data;
 
 + (NSData *)switchDataWithSexadecimalNumberString:(NSString *)string;
+
++ (void)updateFileToQiniuWithData:(NSData *)data resultBlck:(void(^)(NSString *url))resultBlock;
+
 @end

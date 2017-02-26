@@ -6,7 +6,12 @@ target 'SocketTest' do
   # use_frameworks!
 
   # Pods for SocketTest
-  pod 'CocoaAsyncSocket'  
+  pod 'CocoaAsyncSocket', '7.6.0'
+  pod 'Qiniu', '~> 7.1.5'
+#  pod 'JSONKit', '~> 1.5pre'
+  pod 'GTMBase64', '~> 1.0.0'
+
+#  pod 'JSONKit', '~> 1.5pre'
 
 
   target 'SocketTestTests' do

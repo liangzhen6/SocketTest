@@ -59,6 +59,9 @@
     UIImage * image = [UIImage imageNamed:@"tu.png"];
     NSData * idata = UIImagePNGRepresentation(image);
     
+    [MyTools updateFileToQiniuWithData:idata resultBlck:^(NSString *url) {
+        
+    }];
 //    NSString *hexStr = [MyTools switchSexadecimalNumberStringWithData:idata];
     
 //    NSDictionary * dict = @{@"hah":@"sb",@"message":hexStr};
