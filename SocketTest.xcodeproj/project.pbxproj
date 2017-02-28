@@ -21,6 +21,7 @@
 		FA8F0A131E601E2D00AD3A3E /* SocketTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0A121E601E2D00AD3A3E /* SocketTestUITests.m */; };
 		FA8F0A221E602E2200AD3A3E /* NetWorkIP.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0A211E602E2200AD3A3E /* NetWorkIP.m */; };
 		FA8F0A251E602EC900AD3A3E /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0A241E602EC900AD3A3E /* Socket.m */; };
+		FACE7DF01E655C2400030AB7 /* MModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE7DEF1E655C2400030AB7 /* MModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		FA8F0A211E602E2200AD3A3E /* NetWorkIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkIP.m; sourceTree = "<group>"; };
 		FA8F0A231E602EC900AD3A3E /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
 		FA8F0A241E602EC900AD3A3E /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
+		FACE7DEE1E655C2400030AB7 /* MModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MModel.h; sourceTree = "<group>"; };
+		FACE7DEF1E655C2400030AB7 /* MModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MModel.m; sourceTree = "<group>"; };
 		FEEAE917135C2E56F76EB585 /* Pods-SocketTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketTestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketTestTests/Pods-SocketTestTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +169,7 @@
 				32F37A141E616F0A007F8FD8 /* MyTools.m */,
 				FA8F0A231E602EC900AD3A3E /* Socket.h */,
 				FA8F0A241E602EC900AD3A3E /* Socket.m */,
+				FACE7DED1E655BD200030AB7 /* Model */,
 				FA8F09F31E601E2D00AD3A3E /* ViewController.h */,
 				FA8F09F41E601E2D00AD3A3E /* ViewController.m */,
 				FA8F09F61E601E2D00AD3A3E /* Main.storyboard */,
@@ -201,6 +205,15 @@
 				FA8F0A141E601E2D00AD3A3E /* Info.plist */,
 			);
 			path = SocketTestUITests;
+			sourceTree = "<group>";
+		};
+		FACE7DED1E655BD200030AB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FACE7DEE1E655C2400030AB7 /* MModel.h */,
+				FACE7DEF1E655C2400030AB7 /* MModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,7 +292,7 @@
 				TargetAttributes = {
 					FA8F09E91E601E2D00AD3A3E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R6M88U6UD2;
+						DevelopmentTeam = G4E6298X77;
 						ProvisioningStyle = Automatic;
 					};
 					FA8F0A021E601E2D00AD3A3E = {
@@ -489,6 +502,7 @@
 				FA8F0A251E602EC900AD3A3E /* Socket.m in Sources */,
 				FA8F09F51E601E2D00AD3A3E /* ViewController.m in Sources */,
 				FA8F0A221E602E2200AD3A3E /* NetWorkIP.m in Sources */,
+				FACE7DF01E655C2400030AB7 /* MModel.m in Sources */,
 				32F37A151E616F0A007F8FD8 /* MyTools.m in Sources */,
 				FA8F09F21E601E2D00AD3A3E /* AppDelegate.m in Sources */,
 				FA8F09EF1E601E2D00AD3A3E /* main.m in Sources */,
@@ -642,7 +656,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6M88U6UD2;
+				DEVELOPMENT_TEAM = G4E6298X77;
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -657,7 +671,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6M88U6UD2;
+				DEVELOPMENT_TEAM = G4E6298X77;
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

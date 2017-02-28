@@ -14,6 +14,6 @@
 
 + (NSData *)switchDataWithSexadecimalNumberString:(NSString *)string;
 
-+ (void)updateFileToQiniuWithData:(NSData *)data resultBlck:(void(^)(NSString *url))resultBlock;
++ (void)updateFileToQiniuWithData:(NSData *)data progress:(void(^)(float progress))progressBlock resultBlck:(void(^)(NSString *url))resultBlock;
 
 @end

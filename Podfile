@@ -10,7 +10,7 @@ target 'SocketTest' do
   pod 'Qiniu', '~> 7.1.5'
 #  pod 'JSONKit', '~> 1.5pre'
   pod 'GTMBase64', '~> 1.0.0'
-
+  pod 'SDWebImage', '~> 3.8.2'
 #  pod 'JSONKit', '~> 1.5pre'
 
 

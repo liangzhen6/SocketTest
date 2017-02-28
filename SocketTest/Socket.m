@@ -10,6 +10,8 @@
 #import <GCDAsyncSocket.h>
 #import "MyTools.h"
 #import <UIKit/UIKit.h>
+#import "MModel.h"
+
 
 @interface Socket ()<GCDAsyncSocketDelegate>
 @property(nonatomic,strong)GCDAsyncSocket *asyncSocket;
@@ -54,12 +56,38 @@
 }
 
 
-- (void)sentMessage:(NSString *)string {
+- (void)sentMessage:(MModel *)model progress:(void(^)(float progress))progressBlock{
+    NSMutableDictionary * sendDict = [[NSMutableDictionary alloc] init];
+    switch (model.messageTpye) {
+        case 0:
+        {//文字的消息
+            self.progressBlock = progressBlock;
+            [sendDict setObject:@"text" forKey:@"MType"];
+            [sendDict setObject:model.textMessage forKey:@"textMessage"];
+            NSData *mData = [NSJSONSerialization dataWithJSONObject:sendDict options:NSJSONWritingPrettyPrinted error:nil];
+            [_asyncSocket writeData:mData withTimeout:-1 tag:100];
+            
+        }
+            break;
+        case 1:
+        {
+            
+            
+        }
+            break;
+
+            
+        default:
+            break;
+    }
+ /*
 //    NSData * idata = [string dataUsingEncoding:NSUTF8StringEncoding];
     UIImage * image = [UIImage imageNamed:@"tu.png"];
     NSData * idata = UIImagePNGRepresentation(image);
     
-    [MyTools updateFileToQiniuWithData:idata resultBlck:^(NSString *url) {
+    [MyTools updateFileToQiniuWithData:idata progress:^(float progress) {
+        progressBlock(progress);
+    } resultBlck:^(NSString *url) {
         
     }];
 //    NSString *hexStr = [MyTools switchSexadecimalNumberStringWithData:idata];
@@ -68,7 +96,9 @@
 //    NSMutableDictionary * mudict = [[NSMutableDictionary alloc] initWithDictionary:dict];
 //    [mudict setObject:data forKey:@"message"];
 //    NSData * data1 = [NSJSONSerialization dataWithJSONObject:mudict options:NSJSONWritingPrettyPrinted error:nil];
-    [_asyncSocket writeData:idata withTimeout:-1 tag:100];
+  [_asyncSocket writeData:idata withTimeout:-1 tag:100];
+
+  */
 }
 
 
@@ -79,19 +109,19 @@
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NSLog(@"%@----已经接收消息---%@",sock,_serverSocket);
-    NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"%@",dict);
+//    NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//    NSLog(@"%@",dict);
     
     
     //接收端
     
 //    1.NSData 转字符串
-    NSString *s= [dict objectForKey:@"message"];
+//    NSString *s= [dict objectForKey:@"message"];
 //    NSString *s=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSData *datas = [MyTools switchDataWithSexadecimalNumberString:s];
-    
-    NSString * string = [[NSString alloc] initWithData:datas encoding:NSUTF8StringEncoding];
-    
+//    NSData *datas = [MyTools switchDataWithSexadecimalNumberString:s];
+//    
+//    NSString * string = [[NSString alloc] initWithData:datas encoding:NSUTF8StringEncoding];
+//    
 //    UIImage *i=[UIImage imageWithData:datas]//以图片为例转换后获得真正的图片
     
     
@@ -105,6 +135,9 @@
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+    if (self.progressBlock) {
+        self.progressBlock(1.0);
+    }
     NSLog(@"%@----已经发送消息---%@",sock,_asyncSocket);
 }
 

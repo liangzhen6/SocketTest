@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "Socket.h"
 #import "NetWorkIP.h"
+#import <UIImageView+WebCache.h>
+#import "MModel.h"
 
 
 @interface ViewController ()
@@ -20,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initSocket];
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -36,10 +40,27 @@
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [_socket sentMessage:@"哈哈哈hha👌😆😂"];
+    MModel * model = [[MModel alloc] init];
+    model.modelType = modelTypeSend;
+    model.messageTpye = messageTypeText;
+    model.textMessage = @"hahah😁哈哈😁";
+    [model addObserver:self forKeyPath:@"sendProgress" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [_socket sentMessage:model progress:^(float progress) {
+        model.sendProgress = progress;
+    }];
 
 
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"sendProgress"]) {
+        NSLog(@"发送成功");
+    }
+
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
