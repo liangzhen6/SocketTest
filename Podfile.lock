@@ -17,6 +17,7 @@ PODS:
   - CocoaAsyncSocket (7.6.0)
   - GTMBase64 (1.0.0)
   - HappyDNS (0.3.10)
+  - Masonry (1.0.2)
   - Qiniu (7.1.5):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
@@ -27,6 +28,7 @@ PODS:
 DEPENDENCIES:
   - CocoaAsyncSocket (= 7.6.0)
   - GTMBase64 (~> 1.0.0)
+  - Masonry (~> 1.0.2)
   - Qiniu (~> 7.1.5)
   - SDWebImage (~> 3.8.2)
 
@@ -35,9 +37,10 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: b9d5589f07baf9de8f34cc25abd4fcba28f13805
   GTMBase64: 0da7372e95f5171f3f652db38cde6716f8eb5e24
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 1a021de64fb1790c0e8897a471080593ffbc5806
+PODFILE CHECKSUM: b6eb0e113bd9f28d1f0f726b5418f059d6482468
 
 COCOAPODS: 1.2.0

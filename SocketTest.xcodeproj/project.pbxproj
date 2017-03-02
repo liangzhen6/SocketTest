@@ -11,6 +11,9 @@
 		32F37A151E616F0A007F8FD8 /* MyTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F37A141E616F0A007F8FD8 /* MyTools.m */; };
 		63D60268A619EAA53122087F /* libPods-SocketTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53480EF7AB99668A6805C322 /* libPods-SocketTest.a */; };
 		DCF2C1E3B6F2BA168FA251A8 /* libPods-SocketTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CCD25CA4FB6DB5D67B90CE /* libPods-SocketTestTests.a */; };
+		FA0BB4071E669EF50018F3E5 /* NSArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB4041E669EF50018F3E5 /* NSArray+Extension.m */; };
+		FA0BB4081E669EF50018F3E5 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB4061E669EF50018F3E5 /* NSDictionary+Extension.m */; };
+		FA0BB40B1E66AC250018F3E5 /* SendMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB40A1E66AC250018F3E5 /* SendMessageView.m */; };
 		FA8F09EF1E601E2D00AD3A3E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F09EE1E601E2D00AD3A3E /* main.m */; };
 		FA8F09F21E601E2D00AD3A3E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F09F11E601E2D00AD3A3E /* AppDelegate.m */; };
 		FA8F09F51E601E2D00AD3A3E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F09F41E601E2D00AD3A3E /* ViewController.m */; };
@@ -22,6 +25,9 @@
 		FA8F0A221E602E2200AD3A3E /* NetWorkIP.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0A211E602E2200AD3A3E /* NetWorkIP.m */; };
 		FA8F0A251E602EC900AD3A3E /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F0A241E602EC900AD3A3E /* Socket.m */; };
 		FACE7DF01E655C2400030AB7 /* MModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE7DEF1E655C2400030AB7 /* MModel.m */; };
+		FACE7DF51E65799500030AB7 /* TalkRoomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE7DF41E65799500030AB7 /* TalkRoomVC.m */; };
+		FACE7DFB1E658AF700030AB7 /* TextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE7DF91E658AF700030AB7 /* TextMessageCell.m */; };
+		FACE7DFC1E658AF700030AB7 /* TextMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACE7DFA1E658AF700030AB7 /* TextMessageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +58,12 @@
 		9368149E24D62E7E42A18A64 /* Pods-SocketTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketTest/Pods-SocketTest.release.xcconfig"; sourceTree = "<group>"; };
 		B8F9384899BEF0C2EEE6B434 /* Pods-SocketTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketTest/Pods-SocketTest.debug.xcconfig"; sourceTree = "<group>"; };
 		D57CB1BF8E79CF21EC2C15E3 /* Pods-SocketTestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketTestUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketTestUITests/Pods-SocketTestUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FA0BB4031E669EF50018F3E5 /* NSArray+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extension.h"; sourceTree = "<group>"; };
+		FA0BB4041E669EF50018F3E5 /* NSArray+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extension.m"; sourceTree = "<group>"; };
+		FA0BB4051E669EF50018F3E5 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
+		FA0BB4061E669EF50018F3E5 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
+		FA0BB4091E66AC250018F3E5 /* SendMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageView.h; sourceTree = "<group>"; };
+		FA0BB40A1E66AC250018F3E5 /* SendMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageView.m; sourceTree = "<group>"; };
 		FA8F09EA1E601E2D00AD3A3E /* SocketTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8F09EE1E601E2D00AD3A3E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA8F09F01E601E2D00AD3A3E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,6 +86,12 @@
 		FA8F0A241E602EC900AD3A3E /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
 		FACE7DEE1E655C2400030AB7 /* MModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MModel.h; sourceTree = "<group>"; };
 		FACE7DEF1E655C2400030AB7 /* MModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MModel.m; sourceTree = "<group>"; };
+		FACE7DF31E65799500030AB7 /* TalkRoomVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkRoomVC.h; sourceTree = "<group>"; };
+		FACE7DF41E65799500030AB7 /* TalkRoomVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkRoomVC.m; sourceTree = "<group>"; };
+		FACE7DF71E65864D00030AB7 /* SocketTest.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketTest.pch; sourceTree = "<group>"; };
+		FACE7DF81E658AF700030AB7 /* TextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMessageCell.h; sourceTree = "<group>"; };
+		FACE7DF91E658AF700030AB7 /* TextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMessageCell.m; sourceTree = "<group>"; };
+		FACE7DFA1E658AF700030AB7 /* TextMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextMessageCell.xib; sourceTree = "<group>"; };
 		FEEAE917135C2E56F76EB585 /* Pods-SocketTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketTestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketTestTests/Pods-SocketTestTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +139,7 @@
 		329649041E61C8D60097F288 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				FA0BB4021E669EF50018F3E5 /* Printf */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -133,6 +152,17 @@
 				7B87F3D9A6F1122131088821 /* libPods-SocketTestUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA0BB4021E669EF50018F3E5 /* Printf */ = {
+			isa = PBXGroup;
+			children = (
+				FA0BB4031E669EF50018F3E5 /* NSArray+Extension.h */,
+				FA0BB4041E669EF50018F3E5 /* NSArray+Extension.m */,
+				FA0BB4051E669EF50018F3E5 /* NSDictionary+Extension.h */,
+				FA0BB4061E669EF50018F3E5 /* NSDictionary+Extension.m */,
+			);
+			path = Printf;
 			sourceTree = "<group>";
 		};
 		FA8F09E11E601E2C00AD3A3E = {
@@ -163,15 +193,11 @@
 				329649041E61C8D60097F288 /* Library */,
 				FA8F09F01E601E2D00AD3A3E /* AppDelegate.h */,
 				FA8F09F11E601E2D00AD3A3E /* AppDelegate.m */,
-				FA8F0A201E602E2200AD3A3E /* NetWorkIP.h */,
-				FA8F0A211E602E2200AD3A3E /* NetWorkIP.m */,
-				32F37A131E616F0A007F8FD8 /* MyTools.h */,
-				32F37A141E616F0A007F8FD8 /* MyTools.m */,
-				FA8F0A231E602EC900AD3A3E /* Socket.h */,
-				FA8F0A241E602EC900AD3A3E /* Socket.m */,
+				FACE7DF11E6578EF00030AB7 /* Tools */,
 				FACE7DED1E655BD200030AB7 /* Model */,
 				FA8F09F31E601E2D00AD3A3E /* ViewController.h */,
 				FA8F09F41E601E2D00AD3A3E /* ViewController.m */,
+				FACE7DF21E65791000030AB7 /* View */,
 				FA8F09F61E601E2D00AD3A3E /* Main.storyboard */,
 				FA8F09F91E601E2D00AD3A3E /* Assets.xcassets */,
 				FA8F09FB1E601E2D00AD3A3E /* LaunchScreen.storyboard */,
@@ -185,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8F09EE1E601E2D00AD3A3E /* main.m */,
+				FACE7DF71E65864D00030AB7 /* SocketTest.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -214,6 +241,33 @@
 				FACE7DEF1E655C2400030AB7 /* MModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		FACE7DF11E6578EF00030AB7 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				FA8F0A201E602E2200AD3A3E /* NetWorkIP.h */,
+				FA8F0A211E602E2200AD3A3E /* NetWorkIP.m */,
+				32F37A131E616F0A007F8FD8 /* MyTools.h */,
+				32F37A141E616F0A007F8FD8 /* MyTools.m */,
+				FA8F0A231E602EC900AD3A3E /* Socket.h */,
+				FA8F0A241E602EC900AD3A3E /* Socket.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		FACE7DF21E65791000030AB7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FACE7DF31E65799500030AB7 /* TalkRoomVC.h */,
+				FACE7DF41E65799500030AB7 /* TalkRoomVC.m */,
+				FA0BB4091E66AC250018F3E5 /* SendMessageView.h */,
+				FA0BB40A1E66AC250018F3E5 /* SendMessageView.m */,
+				FACE7DF81E658AF700030AB7 /* TextMessageCell.h */,
+				FACE7DF91E658AF700030AB7 /* TextMessageCell.m */,
+				FACE7DFA1E658AF700030AB7 /* TextMessageCell.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +390,7 @@
 			files = (
 				FA8F09FD1E601E2D00AD3A3E /* LaunchScreen.storyboard in Resources */,
 				FA8F09FA1E601E2D00AD3A3E /* Assets.xcassets in Resources */,
+				FACE7DFC1E658AF700030AB7 /* TextMessageCell.xib in Resources */,
 				FA8F09F81E601E2D00AD3A3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,12 +555,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8F0A251E602EC900AD3A3E /* Socket.m in Sources */,
+				FACE7DF51E65799500030AB7 /* TalkRoomVC.m in Sources */,
+				FACE7DFB1E658AF700030AB7 /* TextMessageCell.m in Sources */,
 				FA8F09F51E601E2D00AD3A3E /* ViewController.m in Sources */,
 				FA8F0A221E602E2200AD3A3E /* NetWorkIP.m in Sources */,
 				FACE7DF01E655C2400030AB7 /* MModel.m in Sources */,
+				FA0BB4071E669EF50018F3E5 /* NSArray+Extension.m in Sources */,
 				32F37A151E616F0A007F8FD8 /* MyTools.m in Sources */,
 				FA8F09F21E601E2D00AD3A3E /* AppDelegate.m in Sources */,
 				FA8F09EF1E601E2D00AD3A3E /* main.m in Sources */,
+				FA0BB40B1E66AC250018F3E5 /* SendMessageView.m in Sources */,
+				FA0BB4081E669EF50018F3E5 /* NSDictionary+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +717,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = G4E6298X77;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SocketTest/SocketTest.pch";
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -672,6 +734,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = G4E6298X77;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SocketTest/SocketTest.pch";
 				INFOPLIST_FILE = SocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

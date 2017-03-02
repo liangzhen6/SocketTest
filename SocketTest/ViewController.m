@@ -11,7 +11,7 @@
 #import "NetWorkIP.h"
 #import <UIImageView+WebCache.h>
 #import "MModel.h"
-
+#import "TalkRoomVC.h"
 
 @interface ViewController ()
 @property(nonatomic,strong)Socket * socket;
@@ -23,7 +23,7 @@
     [super viewDidLoad];
     [self initSocket];
     
-    
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -40,16 +40,16 @@
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    MModel * model = [[MModel alloc] init];
-    model.modelType = modelTypeSend;
-    model.messageTpye = messageTypeText;
-    model.textMessage = @"hahah😁哈哈😁";
-    [model addObserver:self forKeyPath:@"sendProgress" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    [_socket sentMessage:model progress:^(float progress) {
-        model.sendProgress = progress;
-    }];
-
-
+//    MModel * model = [[MModel alloc] init];
+//    model.modelType = modelTypeSend;
+//    model.messageTpye = messageTypeText;
+//    model.textMessage = @"hahah😁哈哈😁";
+//    [model addObserver:self forKeyPath:@"sendProgress" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+//    [_socket sentMessage:model progress:^(float progress) {
+//        model.sendProgress = progress;
+//    }];
+    TalkRoomVC * room = [[TalkRoomVC alloc] init];
+    [self presentViewController:room animated:YES completion:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{

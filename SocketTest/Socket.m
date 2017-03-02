@@ -84,7 +84,6 @@
 //    NSData * idata = [string dataUsingEncoding:NSUTF8StringEncoding];
     UIImage * image = [UIImage imageNamed:@"tu.png"];
     NSData * idata = UIImagePNGRepresentation(image);
-    
     [MyTools updateFileToQiniuWithData:idata progress:^(float progress) {
         progressBlock(progress);
     } resultBlck:^(NSString *url) {
