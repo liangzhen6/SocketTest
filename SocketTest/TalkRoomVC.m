@@ -7,7 +7,9 @@
 //
 
 #import "TalkRoomVC.h"
-#import "TextMessageCell.h"
+//#import "TextMessageCell.h"
+#import "SenderTextMessageCell.h"
+#import "SenderImageMessageCell.h"
 #import "MModel.h"
 #import "SendMessageView.h"
 #import "Socket.h"
@@ -95,6 +97,7 @@
 
     [self.view endEditing:YES];
 
+    [self sendImageMessage];
 }
 
 - (void)sendMessage:(NSString *)message {
@@ -115,6 +118,27 @@
     [self scrollToLastPath];
 }
 
+- (void)sendImageMessage {
+    MModel * model = [[MModel alloc] init];
+    model.modelType = modelTypeSend;
+    model.messageTpye = messageTypeImage;
+    
+    UIImage * image = [UIImage imageNamed:@"tu.png"];
+    NSData * idata = UIImagePNGRepresentation(image);
+    model.imageData = idata;
+    
+    [[Socket shareSocket] sentMessage:model progress:^(float progress) {
+        model.sendProgress = progress;
+    }];//sock通信
+    
+    [self.dataSource addObject:model];
+    
+    [self.tableView reloadData];
+    
+    [self scrollToLastPath];
+
+
+}
 
 #pragma mark ======================tabledelagte=============================
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -124,15 +148,37 @@
 //    return 70;
 //}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * reuserId = @"cell";
-    TextMessageCell * cell = [tableView dequeueReusableCellWithIdentifier:reuserId];
-    if (cell==nil) {
-        cell = [[TextMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuserId];
+    static NSString * reuserTextId = @"textCell";
+    static NSString * reuserImageId = @"imageCell";
+    MModel * model = self.dataSource[indexPath.row];
+    SenderBaseMessageCell * cell;
+    switch (model.messageTpye) {
+        case 0:
+        {//文字
+            cell = [tableView dequeueReusableCellWithIdentifier:reuserTextId];
+            if (cell==nil) {
+                cell = [[SenderTextMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuserTextId];
+            }
+
+        }
+            break;
+        case 1:
+        {//图片
+            cell = [tableView dequeueReusableCellWithIdentifier:reuserImageId];
+            if (cell==nil) {
+                cell = [[SenderImageMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuserImageId];
+            }
+        
+        }
+            break;
+        default:
+            break;
     }
     
-    cell.mModel = self.dataSource[indexPath.row];
-    
+    cell.mModel = model;
+
     return cell;
+
 
 }
 

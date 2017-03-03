@@ -129,8 +129,11 @@
     NSString * token = [myTools makeToken:@"XpD4Uc-iXMYGYDu6pY9MDjm6VZTeJxubN2pvdKEX" secretKey:@"Uu8bZ9OvY-jTEXuCzroTmzj0YWr7ryWqKsG2jnu_"];
    
     [upManager putData:data key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        NSLog(@"info ===== %@", info);
-        NSLog(@"resp ===== %@", resp);
+        DBLog(@"info ===== %@", info);
+        DBLog(@"resp ===== %@", resp);
+        NSString *url = [NSString stringWithFormat:@"http://olxnvuztq.bkt.clouddn.com/%@",[resp objectForKey:@"key"]];
+        resultBlock(url);
+        
     } option:uploadOption];
 
 

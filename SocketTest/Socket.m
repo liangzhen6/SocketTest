@@ -70,7 +70,22 @@
         }
             break;
         case 1:
-        {
+        {//图片消息
+            
+            self.progressBlock = progressBlock;
+            [sendDict setObject:@"image" forKey:@"MType"];
+            [MyTools updateFileToQiniuWithData:model.imageData progress:^(float progress) {
+                
+                model.sendProgress = progress>0.9?0.9:progress;
+                
+            } resultBlck:^(NSString *url) {
+//                model.sourceUrl = url;
+                [sendDict setObject:url forKey:@"model.sourceUrl"];
+                
+                NSData *mData = [NSJSONSerialization dataWithJSONObject:sendDict options:NSJSONWritingPrettyPrinted error:nil];
+                [_asyncSocket writeData:mData withTimeout:-1 tag:100];
+                
+            }];
             
             
         }
@@ -79,7 +94,8 @@
             
         default:
             break;
-    }
+
+}
  /*
 //    NSData * idata = [string dataUsingEncoding:NSUTF8StringEncoding];
     UIImage * image = [UIImage imageNamed:@"tu.png"];

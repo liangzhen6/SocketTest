@@ -33,6 +33,7 @@ typedef  NS_ENUM(NSInteger,modelType){
 @property(nonatomic,copy)NSString * sourceUrl;
 @property(nonatomic,copy)NSString * textMessage;
 @property(nonatomic,assign)float sendProgress;
+@property(nonatomic,strong)NSData * imageData;
 
 
 @end

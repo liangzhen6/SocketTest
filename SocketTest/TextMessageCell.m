@@ -62,7 +62,7 @@
         make.top.equalTo(self.contentView).offset(5);
         make.right.equalTo(self.headImage.mas_left).offset(-5);
         make.bottom.equalTo(self.contentView).offset(-5);
-        make.size.mas_equalTo(CGSizeMake(Screen_Width - 160, 40));
+        make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     
     
@@ -128,6 +128,7 @@
 
     }
     
+    [self.contentView layoutIfNeeded];
 
 }
 

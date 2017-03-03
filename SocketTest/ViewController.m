@@ -52,13 +52,6 @@
     [self presentViewController:room animated:YES completion:nil];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if ([keyPath isEqualToString:@"sendProgress"]) {
-        NSLog(@"发送成功");
-    }
-
-}
-
 
 
 - (void)didReceiveMemoryWarning {

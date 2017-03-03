@@ -14,6 +14,10 @@
 		FA0BB4071E669EF50018F3E5 /* NSArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB4041E669EF50018F3E5 /* NSArray+Extension.m */; };
 		FA0BB4081E669EF50018F3E5 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB4061E669EF50018F3E5 /* NSDictionary+Extension.m */; };
 		FA0BB40B1E66AC250018F3E5 /* SendMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB40A1E66AC250018F3E5 /* SendMessageView.m */; };
+		FA47AE531E69675E00C7CE1E /* TextMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA47AE521E69675E00C7CE1E /* TextMessageView.m */; };
+		FA47AE561E696E2900C7CE1E /* SenderBaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA47AE551E696E2900C7CE1E /* SenderBaseMessageCell.m */; };
+		FA47AE591E696F8300C7CE1E /* SenderTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA47AE581E696F8300C7CE1E /* SenderTextMessageCell.m */; };
+		FA47AE5C1E69765600C7CE1E /* SenderImageMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA47AE5B1E69765600C7CE1E /* SenderImageMessageCell.m */; };
 		FA8F09EF1E601E2D00AD3A3E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F09EE1E601E2D00AD3A3E /* main.m */; };
 		FA8F09F21E601E2D00AD3A3E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F09F11E601E2D00AD3A3E /* AppDelegate.m */; };
 		FA8F09F51E601E2D00AD3A3E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F09F41E601E2D00AD3A3E /* ViewController.m */; };
@@ -64,6 +68,14 @@
 		FA0BB4061E669EF50018F3E5 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		FA0BB4091E66AC250018F3E5 /* SendMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageView.h; sourceTree = "<group>"; };
 		FA0BB40A1E66AC250018F3E5 /* SendMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageView.m; sourceTree = "<group>"; };
+		FA47AE511E69675E00C7CE1E /* TextMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMessageView.h; sourceTree = "<group>"; };
+		FA47AE521E69675E00C7CE1E /* TextMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMessageView.m; sourceTree = "<group>"; };
+		FA47AE541E696E2900C7CE1E /* SenderBaseMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderBaseMessageCell.h; sourceTree = "<group>"; };
+		FA47AE551E696E2900C7CE1E /* SenderBaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderBaseMessageCell.m; sourceTree = "<group>"; };
+		FA47AE571E696F8300C7CE1E /* SenderTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderTextMessageCell.h; sourceTree = "<group>"; };
+		FA47AE581E696F8300C7CE1E /* SenderTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderTextMessageCell.m; sourceTree = "<group>"; };
+		FA47AE5A1E69765600C7CE1E /* SenderImageMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderImageMessageCell.h; sourceTree = "<group>"; };
+		FA47AE5B1E69765600C7CE1E /* SenderImageMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderImageMessageCell.m; sourceTree = "<group>"; };
 		FA8F09EA1E601E2D00AD3A3E /* SocketTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8F09EE1E601E2D00AD3A3E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA8F09F01E601E2D00AD3A3E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -263,8 +275,16 @@
 				FACE7DF41E65799500030AB7 /* TalkRoomVC.m */,
 				FA0BB4091E66AC250018F3E5 /* SendMessageView.h */,
 				FA0BB40A1E66AC250018F3E5 /* SendMessageView.m */,
+				FA47AE541E696E2900C7CE1E /* SenderBaseMessageCell.h */,
+				FA47AE551E696E2900C7CE1E /* SenderBaseMessageCell.m */,
+				FA47AE571E696F8300C7CE1E /* SenderTextMessageCell.h */,
+				FA47AE581E696F8300C7CE1E /* SenderTextMessageCell.m */,
+				FA47AE5A1E69765600C7CE1E /* SenderImageMessageCell.h */,
+				FA47AE5B1E69765600C7CE1E /* SenderImageMessageCell.m */,
 				FACE7DF81E658AF700030AB7 /* TextMessageCell.h */,
 				FACE7DF91E658AF700030AB7 /* TextMessageCell.m */,
+				FA47AE511E69675E00C7CE1E /* TextMessageView.h */,
+				FA47AE521E69675E00C7CE1E /* TextMessageView.m */,
 				FACE7DFA1E658AF700030AB7 /* TextMessageCell.xib */,
 			);
 			name = View;
@@ -555,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8F0A251E602EC900AD3A3E /* Socket.m in Sources */,
+				FA47AE561E696E2900C7CE1E /* SenderBaseMessageCell.m in Sources */,
 				FACE7DF51E65799500030AB7 /* TalkRoomVC.m in Sources */,
 				FACE7DFB1E658AF700030AB7 /* TextMessageCell.m in Sources */,
 				FA8F09F51E601E2D00AD3A3E /* ViewController.m in Sources */,
@@ -562,9 +583,12 @@
 				FACE7DF01E655C2400030AB7 /* MModel.m in Sources */,
 				FA0BB4071E669EF50018F3E5 /* NSArray+Extension.m in Sources */,
 				32F37A151E616F0A007F8FD8 /* MyTools.m in Sources */,
+				FA47AE591E696F8300C7CE1E /* SenderTextMessageCell.m in Sources */,
 				FA8F09F21E601E2D00AD3A3E /* AppDelegate.m in Sources */,
 				FA8F09EF1E601E2D00AD3A3E /* main.m in Sources */,
+				FA47AE5C1E69765600C7CE1E /* SenderImageMessageCell.m in Sources */,
 				FA0BB40B1E66AC250018F3E5 /* SendMessageView.m in Sources */,
+				FA47AE531E69675E00C7CE1E /* TextMessageView.m in Sources */,
 				FA0BB4081E669EF50018F3E5 /* NSDictionary+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
