@@ -137,7 +137,7 @@
     NSInteger  _maxTextH = ceil(self.textView.font.lineHeight * 4 + self.textView.textContainerInset.top + self.textView.textContainerInset.bottom);
     
     NSInteger height = ceilf([self.textView sizeThatFits:CGSizeMake(self.textView.bounds.size.width, MAXFLOAT)].height);
-    NSLog(@"%ld",(long)height);
+    DBLog(@"%ld",(long)height);
     if (_textH != height) {
         // 最大高度，可以滚动
         self.textView.scrollEnabled = height > _maxTextH && _maxTextH > 0;

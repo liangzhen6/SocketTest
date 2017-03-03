@@ -109,6 +109,7 @@
     }];//sock通信
     
     [self.dataSource addObject:model];
+    
     [self.tableView reloadData];
    
     [self scrollToLastPath];
