@@ -148,6 +148,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		320108161E7D29A300928CB8 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				FACE7DF81E658AF700030AB7 /* TextMessageCell.h */,
+				FACE7DF91E658AF700030AB7 /* TextMessageCell.m */,
+				FA47AE511E69675E00C7CE1E /* TextMessageView.h */,
+				FA47AE521E69675E00C7CE1E /* TextMessageView.m */,
+				FACE7DFA1E658AF700030AB7 /* TextMessageCell.xib */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
 		329649041E61C8D60097F288 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,11 +293,7 @@
 				FA47AE581E696F8300C7CE1E /* SenderTextMessageCell.m */,
 				FA47AE5A1E69765600C7CE1E /* SenderImageMessageCell.h */,
 				FA47AE5B1E69765600C7CE1E /* SenderImageMessageCell.m */,
-				FACE7DF81E658AF700030AB7 /* TextMessageCell.h */,
-				FACE7DF91E658AF700030AB7 /* TextMessageCell.m */,
-				FA47AE511E69675E00C7CE1E /* TextMessageView.h */,
-				FA47AE521E69675E00C7CE1E /* TextMessageView.m */,
-				FACE7DFA1E658AF700030AB7 /* TextMessageCell.xib */,
+				320108161E7D29A300928CB8 /* Others */,
 			);
 			name = View;
 			sourceTree = "<group>";
