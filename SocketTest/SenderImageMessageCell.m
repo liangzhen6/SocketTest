@@ -15,6 +15,8 @@
 
 @property(nonatomic,strong)UILabel *maskLabel;
 
+@property(nonatomic,strong)NSTimer * timer;
+
 @end
 
 @implementation SenderImageMessageCell
@@ -62,17 +64,8 @@
 - (void)setMModel:(MModel *)mModel {
     [super setMModel:mModel];
     
-    [mModel addObserver:self forKeyPath:@"sendProgress" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    if (mModel.sendProgress<1.0) {
-        self.activityView.hidden = NO;
-        [self.activityView startAnimating];
-        _maskLabel.superview.hidden = NO;
-    }else{
-        self.activityView.hidden = YES;
-        _maskLabel.superview.hidden = YES;
-        [self.activityView stopAnimating];
-    }
-
+    
+    self.timer.fireDate = [NSDate distantPast];
     
     UIImage * image = [UIImage imageWithData:mModel.imageData];
     CGFloat MAXWH = 160.0;
@@ -106,28 +99,64 @@
 
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"sendProgress"]) {
-        dispatch_async(dispatch_get_main_queue(), ^{//获取主线程
-            if (self.mModel.sendProgress<1.0) {
-                _maskLabel.text = [NSString stringWithFormat:@"%.f%%",self.mModel.sendProgress*100];
-            }else{
-                [self.activityView stopAnimating];
-                self.activityView.hidden = YES;
-                _maskLabel.superview.hidden = YES;
-            }
 
-        });
-      
+//定时器，更新UI
+- (NSTimer *)timer {
+    if (_timer==nil) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+//        [_timer fire];//立即开始
+//        _timer.fireDate = [NSDate distantPast];//开始
+        _timer.fireDate = [NSDate distantFuture];//暂停
+    }
+
+    return _timer;
+}
+
+
+- (void)timerAction:(NSTimer *)timer {
+
+    if ([[NSThread currentThread] isMainThread]) {
+        
+        [self reloadProgressUI];
+        
+    }else{
+        
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self reloadProgressUI];
+
+        
+    });
+    
+    }
+
+}
+
+
+- (void)reloadProgressUI {
+    
+    if (self.mModel.sendProgress<1.0) {
+        self.activityView.hidden = NO;
+        [self.activityView startAnimating];
+        _maskLabel.superview.hidden = NO;
+        _maskLabel.text = [NSString stringWithFormat:@"%.f%%",self.mModel.sendProgress*100];
+        DBLog(@"%f",self.mModel.sendProgress);
+        
+    }else{
+        self.activityView.hidden = YES;
+        _maskLabel.superview.hidden = YES;
+        [self.activityView stopAnimating];
+        self.timer.fireDate = [NSDate distantFuture];//暂停定时器
     }
     
 }
 
-
 - (void)dealloc {
     
-    if (self.mModel.observationInfo) {
-        [self.mModel removeObserver:self forKeyPath:@"sendProgress"];
+    if (_timer.isValid) {
+        [_timer invalidate];
+        _timer = nil;
     }
 
 

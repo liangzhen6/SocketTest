@@ -35,5 +35,7 @@ typedef  NS_ENUM(NSInteger,modelType){
 @property(nonatomic,assign)float sendProgress;
 @property(nonatomic,strong)NSData * imageData;
 
+@property(nonatomic)NSInteger tag;
+
 
 @end

@@ -19,6 +19,8 @@
 @property(nonatomic,strong)NSMutableArray * socketArray;
 @property(nonatomic,copy)NSString * host;
 @property(nonatomic)int port;
+
+@property(nonatomic,strong)NSMutableArray * allSendMessage;
 @end
 
 
@@ -58,32 +60,35 @@
 
 - (void)sentMessage:(MModel *)model progress:(void(^)(float progress))progressBlock{
     NSMutableDictionary * sendDict = [[NSMutableDictionary alloc] init];
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000;
+    model.tag = recordTime;
+    [self.allSendMessage addObject:model];
     switch (model.messageTpye) {
         case 0:
         {//文字的消息
-            self.progressBlock = progressBlock;
+//            self.progressBlock = progressBlock;
             [sendDict setObject:@"text" forKey:@"MType"];
             [sendDict setObject:model.textMessage forKey:@"textMessage"];
             NSData *mData = [NSJSONSerialization dataWithJSONObject:sendDict options:NSJSONWritingPrettyPrinted error:nil];
-            [_asyncSocket writeData:mData withTimeout:-1 tag:100];
+            [_asyncSocket writeData:mData withTimeout:-1 tag:model.tag];
             
         }
             break;
         case 1:
         {//图片消息
             
-            self.progressBlock = progressBlock;
+//            self.progressBlock = progressBlock;
             [sendDict setObject:@"image" forKey:@"MType"];
             [MyTools updateFileToQiniuWithData:model.imageData progress:^(float progress) {
                 
-                model.sendProgress = progress>0.9?0.9:progress;
+                model.sendProgress = progress>0.95?0.95:progress;
                 
             } resultBlck:^(NSString *url) {
 //                model.sourceUrl = url;
                 [sendDict setObject:url forKey:@"model.sourceUrl"];
                 
                 NSData *mData = [NSJSONSerialization dataWithJSONObject:sendDict options:NSJSONWritingPrettyPrinted error:nil];
-                [_asyncSocket writeData:mData withTimeout:-1 tag:100];
+                [_asyncSocket writeData:mData withTimeout:-1 tag:model.tag];
                 
             }];
             
@@ -150,8 +155,13 @@
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    if (self.progressBlock) {
-        self.progressBlock(1.0);
+
+    for (MModel * modle in self.allSendMessage) {
+        if (modle.tag==tag) {
+            modle.sendProgress = 1.0;
+            [self.allSendMessage removeObject:modle];
+            break;
+        }
     }
     NSLog(@"%@----已经发送消息---%@",sock,_asyncSocket);
 }
@@ -173,6 +183,13 @@
         _socketArray = [[NSMutableArray alloc] init];
     }
    return _socketArray;
+}
+
+- (NSMutableArray *)allSendMessage {
+    if (_allSendMessage==nil) {
+        _allSendMessage = [[NSMutableArray alloc] init];
+    }
+    return _allSendMessage;
 }
 
 @end

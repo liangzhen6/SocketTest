@@ -59,7 +59,7 @@
          [self sendMessage:message];
      } HBlock:^(NSInteger height) {
          CGFloat H = self.tableView.contentInset.bottom;
-         NSLog(@"=====%ld=====%f",(long)height,H);
+         DBLog(@"=====%ld=====%f",(long)height,H);
          self.tableView.contentInset = UIEdgeInsetsMake(0, 0, H + height, 0);
          _lastH = H + height - _keyBoardFrameH;
          [self scrollToLastPath];

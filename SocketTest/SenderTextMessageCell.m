@@ -13,6 +13,9 @@
 
 @property (strong, nonatomic) UILabel *messageLabel;
 
+@property(nonatomic,strong)NSTimer * timer;
+
+
 @end
 
 @implementation SenderTextMessageCell
@@ -39,18 +42,10 @@
 - (void)setMModel:(MModel *)mModel {
     [super setMModel:mModel];
     
+    self.timer.fireDate = [NSDate distantPast];
+    
     self.messageLabel.text = mModel.textMessage;
     
-    [mModel addObserver:self forKeyPath:@"sendProgress" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    
-    if (mModel.sendProgress<1.0) {
-        self.activityView.hidden = NO;
-        [self.activityView startAnimating];
-    }else{
-        self.activityView.hidden = YES;
-        [self.activityView stopAnimating];
-    }
-
    
     //    CGSize titleSize = [mModel.textMessage sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17 weight:0.5]}];
     
@@ -78,14 +73,61 @@
 
 
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"sendProgress"]) {
-        if (self.mModel.sendProgress==1.0) {
-            [self.activityView stopAnimating];
-            self.activityView.hidden = YES;
-            [self.mModel removeObserver:self forKeyPath:@"sendProgress"];
-        }
+//定时器，更新UI
+- (NSTimer *)timer {
+    if (_timer==nil) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        //        [_timer fire];//立即开始
+        //        _timer.fireDate = [NSDate distantPast];//开始
+        _timer.fireDate = [NSDate distantFuture];//暂停
     }
+    
+    return _timer;
+}
+
+
+- (void)timerAction:(NSTimer *)timer {
+    
+    if ([[NSThread currentThread] isMainThread]) {
+        
+        [self reloadProgressUI];
+        
+    }else{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self reloadProgressUI];
+            
+            
+        });
+        
+    }
+    
+}
+
+- (void)reloadProgressUI {
+    
+    if (self.mModel.sendProgress<1.0) {
+        self.activityView.hidden = NO;
+        [self.activityView startAnimating];
+        
+    }else{
+        self.activityView.hidden = YES;
+        [self.activityView stopAnimating];
+        self.timer.fireDate = [NSDate distantFuture];//暂停定时器
+    }
+    DBLog(@"%f",self.mModel.sendProgress);
+
+}
+
+- (void)dealloc {
+    
+    if (_timer.isValid) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+    
     
 }
 

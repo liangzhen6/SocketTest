@@ -31,7 +31,7 @@
     NSString * ip = [NetWorkIP getIpAddresses];
     if (ip.length) {
        _socket = [Socket shareSocketWithHost:ip port:9800 messageBlack:^(NSData *message) {
-            NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:message options:NSJSONReadingAllowFragments error:nil]);
+            DBLog(@"%@",[NSJSONSerialization JSONObjectWithData:message options:NSJSONReadingAllowFragments error:nil]);
         }];
         
     }
