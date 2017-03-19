@@ -103,7 +103,9 @@
 //定时器，更新UI
 - (NSTimer *)timer {
     if (_timer==nil) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [self timerAction:timer];
+        }];
         [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 //        [_timer fire];//立即开始
 //        _timer.fireDate = [NSDate distantPast];//开始
