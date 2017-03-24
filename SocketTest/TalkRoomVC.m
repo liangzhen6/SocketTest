@@ -13,6 +13,8 @@
 #import "MModel.h"
 #import "SendMessageView.h"
 #import "Socket.h"
+#import "BottomToolView.h"
+
 
 @interface TalkRoomVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -20,6 +22,8 @@
 @property(nonatomic,strong)NSMutableArray * dataSource;
 
 @property(nonatomic,strong)SendMessageView * sendMessageView;
+@property(nonatomic,strong)BottomToolView * bottomToolView;
+@property(nonatomic,strong)UIButton *maskView;
 @property(nonatomic,assign)NSInteger keyBoardFrameH;
 @property(nonatomic,assign)NSInteger lastH;
 
@@ -46,14 +50,18 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.estimatedRowHeight = 50;
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self.tableView addGestureRecognizer:tap];
+//    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//    [self.tableView addGestureRecognizer:tap];
     [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(64);
+        make.left.equalTo(self.view.mas_left).offset(0);
+        make.right.equalTo(self.view.mas_right).offset(0);
+        make.height.mas_equalTo(Screen_Height-64-47);
+    }];
 
 
-//    SendMessageView * sendMessage = [SendMessageView sendMessageViewWithSMBlaock:^(NSString *message) {
-//        [self sendMessage:message];
-//    }];
     
      SendMessageView * sendMessage = [SendMessageView sendMessageViewWithSMBlaock:^(NSString *message) {
          [self sendMessage:message];
@@ -65,7 +73,6 @@
          [self scrollToLastPath];
          
      }];
-
     [self.view addSubview:sendMessage];
     
     self.sendMessageView = sendMessage;
@@ -75,17 +82,59 @@
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom).offset(0);
         make.height.mas_equalTo(47);
-        //        make.size.mas_equalTo(CGSizeMake(Screen_Width, 50));
     }];
     
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(64);
-        make.left.equalTo(self.view.mas_left).offset(0);
-        make.right.equalTo(self.view.mas_right).offset(0);
-//        make.bottom.equalTo(self.sendMessageView.mas_top).offset(0);
-        make.height.mas_equalTo(Screen_Height-64-47);
+
+//    /WithFrame:CGRectMake(0, 47, Screen_Width, (Screen_Width-40)/2+20+50)
+    BottomToolView * bottomToolView = [[BottomToolView alloc] init];
+    
+    [self.view addSubview:bottomToolView];
+    [bottomToolView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(sendMessage.mas_bottom).offset(0);
+        make.left.equalTo(sendMessage.mas_left).offset(0);
+        make.size.mas_equalTo(CGSizeMake(Screen_Width, (Screen_Width-40)/2+20+50));
+    }];
+
+    self.bottomToolView = bottomToolView;
+    
+    //那个遮罩
+    UIButton * maskView = [[UIButton alloc] init];
+    [self.view addSubview:maskView];
+    maskView.backgroundColor = [UIColor clearColor];
+    [maskView addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchDown];
+    [maskView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(64);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(sendMessage.mas_top);
     }];
     
+    self.maskView = maskView;
+    
+    
+    //点击了出bottom的按钮
+    [sendMessage setShowBVBlock:^{
+        self.maskView.hidden = NO;
+        if (self.bottomToolView.isHidden) {
+            [self.view endEditing:YES];
+            self.bottomToolView.hidden = NO;
+            [self.sendMessageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.view.mas_bottom).offset(-self.bottomToolView.bounds.size.height);
+            }];
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                [self.view layoutIfNeeded];
+                self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.bottomToolView.bounds.size.height+_lastH, 0);
+                [self scrollToLastPath];
+            }];
+        }else{
+            self.bottomToolView.hidden = YES;
+            [self.sendMessageView.textView becomeFirstResponder];
+            
+       }
+     
+    }];
+
     [self createKeyBoardNotification];
 
 
@@ -93,11 +142,27 @@
 
 
 
-- (void)tapAction:(UITapGestureRecognizer *)tap {
+- (void)tapAction:(UIButton *)btn {
+     btn.hidden = YES;
+    
+   if (CGRectGetMaxY(self.sendMessageView.frame)<Screen_Height) {
 
-    [self.view endEditing:YES];
+         [self.view endEditing:YES];
+    
+         [self.sendMessageView mas_updateConstraints:^(MASConstraintMaker *make) {
+           make.bottom.equalTo(self.view.mas_bottom).offset(0);
+         }];
+        self.bottomToolView.hidden = YES;
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view layoutIfNeeded];
+            self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0+_lastH, 0);
+            [self scrollToLastPath];
+        }];
 
-    [self sendImageMessage];
+    }
+    
+
+//    [self sendImageMessage];
 }
 
 - (void)sendMessage:(NSString *)message {
@@ -182,13 +247,6 @@
 
 }
 
-//tableView被滑动的时候，停止编辑
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-
-  [self tapAction:nil];
-    
-}
-
 
 //跳到最后面一个cell
 - (void)scrollToLastPath {
@@ -208,12 +266,12 @@
                                              selector:@selector(keyboardWasShown:)
      
                                                  name:UIKeyboardWillShowNotification object:nil];
-    //注册键盘消失的通知
-    [[NSNotificationCenter defaultCenter] addObserver:self
-     
-                                             selector:@selector(keyboardWillBeHidden:)
-     
-                                                 name:UIKeyboardWillHideNotification object:nil];
+//    //注册键盘消失的通知
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//     
+//                                             selector:@selector(keyboardWillBeHidden:)
+//     
+//                                                 name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)keyboardWasShown:(NSNotification*)aNotification {
@@ -222,12 +280,14 @@
     CGFloat duration = [aNotification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
     //键盘高度
     CGRect keyBoardFrame = [[[aNotification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
+    self.bottomToolView.hidden = YES;
+    self.maskView.hidden = NO;
     [self.sendMessageView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_bottom).offset(-keyBoardFrame.size.height);
     }];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, keyBoardFrame.size.height + _lastH, 0);
     
+ 
     _keyBoardFrameH = keyBoardFrame.size.height;
 
     [self scrollToLastPath];
@@ -240,22 +300,23 @@
 
 
 
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
-    // 获取键盘弹出时长
-    CGFloat duration = [aNotification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    
-    [self.sendMessageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view.mas_bottom).offset(0);
-    }];
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0+_lastH, 0);
-    
-    [self scrollToLastPath];
-
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
+//- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
+//    // 获取键盘弹出时长
+//    CGFloat duration = [aNotification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+//    
+////    
+////    [self.sendMessageView mas_updateConstraints:^(MASConstraintMaker *make) {
+////        make.bottom.equalTo(self.view.mas_bottom).offset(0);
+////    }];
+////    
+////    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0+_lastH, 0);
+////    
+////    [self scrollToLastPath];
+////
+////    [UIView animateWithDuration:duration animations:^{
+////        [self.view layoutIfNeeded];
+////    }];
+//}
 
 - (void)dealloc {
     

@@ -14,6 +14,13 @@
 
 @property(nonatomic,copy)void(^HBlock)(NSInteger height);
 
+@property(nonatomic,getter=isOpenAdd)BOOL openAdd;
+
+@property(nonatomic,strong)void(^showBVBlock)();
+
+@property(nonatomic,strong)UITextView * textView;
+
+
 
 + (id)sendMessageViewWithSMBlaock:(void(^)(NSString *message))SMBlock;
 

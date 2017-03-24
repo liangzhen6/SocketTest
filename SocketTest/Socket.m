@@ -132,7 +132,6 @@
 //    NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 //    NSLog(@"%@",dict);
     
-    
     //接收端
     
 //    1.NSData 转字符串

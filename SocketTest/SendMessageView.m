@@ -7,10 +7,11 @@
 //
 
 #import "SendMessageView.h"
+#import "BottomToolView.h"
+
 #define baseTag 18954
 @interface SendMessageView ()<UITextViewDelegate>
 @property(nonatomic,strong)UIButton * textSoundSwitchBtn;
-@property(nonatomic,strong)UITextView * textView;
 @property(nonatomic,strong)UIButton * facialBtn;
 @property(nonatomic,strong)UIButton * addBtn;
 @property (nonatomic, assign) NSInteger textH;
@@ -57,6 +58,7 @@
     
     _addBtn = [[UIButton alloc] init];
     _addBtn.tag = baseTag+2;
+    _addBtn.backgroundColor = [UIColor redColor];
     [_addBtn addTarget:self action:@selector(allBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_addBtn];
     [_addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,12 +69,14 @@
     
     
     _facialBtn = [[UIButton alloc] init];
+    _facialBtn.backgroundColor = [UIColor greenColor ];
+
     _facialBtn.tag = baseTag+1;
     [_facialBtn addTarget:self action:@selector(allBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_facialBtn];
     [_facialBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.mas_bottom).offset(-5);
-        make.left.equalTo(_addBtn.mas_left).offset(-10);
+        make.right.equalTo(_addBtn.mas_left).offset(-10);
         make.size.mas_equalTo(CGSizeMake(37, 37));
     }];
     
@@ -104,7 +108,46 @@
 }
 
 - (void)allBtnAction:(UIButton *)btn {
-
+    switch (btn.tag-baseTag) {
+        case 0:
+        {
+            
+            
+            
+        }
+            break;
+        case 1:
+        {
+            
+            
+            
+        }
+            break;
+        case 2:
+        {//弹出工具栏
+//          self.openAdd = !self.openAdd;
+//            [self.superview endEditing:YES];
+//            
+//            self.bottomToolView.hidden = NO;
+//            self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.bottomToolView.bounds.size.height, 0);
+//
+//            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.bottom.equalTo(self.superview.mas_bottom).offset(-self.bottomToolView.bounds.size.height);
+//            }];
+//
+//            [UIView animateWithDuration:0.3 animations:^{
+//                [self.superview layoutIfNeeded];
+//            }];
+            if (self.showBVBlock) {
+                self.showBVBlock();
+            }
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
     
 }
 
