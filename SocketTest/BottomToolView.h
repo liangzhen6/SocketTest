@@ -10,4 +10,7 @@
 
 @interface BottomToolView : UIView
 
+@property(nonatomic,copy)void(^bottomBlock)(NSInteger number);
+
+
 @end

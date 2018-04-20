@@ -53,7 +53,9 @@
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tap {
-    NSLog(@"hahahahh");
+    if (self.bottomBlock) {
+        self.bottomBlock(tap.view.tag-1000);
+    }
 
 }
 - (UIPageControl *)pageControl {

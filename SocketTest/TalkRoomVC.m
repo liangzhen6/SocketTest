@@ -14,6 +14,7 @@
 #import "SendMessageView.h"
 #import "Socket.h"
 #import "BottomToolView.h"
+#import "TZImagePickerController.h"
 
 
 @interface TalkRoomVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -87,7 +88,7 @@
 
 //    /WithFrame:CGRectMake(0, 47, Screen_Width, (Screen_Width-40)/2+20+50)
     BottomToolView * bottomToolView = [[BottomToolView alloc] init];
-    
+    bottomToolView.hidden = YES;
     [self.view addSubview:bottomToolView];
     [bottomToolView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(sendMessage.mas_bottom).offset(0);
@@ -134,9 +135,52 @@
        }
      
     }];
+    
+    //底部来的事件
+    [bottomToolView setBottomBlock:^(NSInteger number) {
+    
+        switch (number) {
+            case 0:
+            {//选择图片
+            
+                [self packImage];
+            
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
+    }];
+    
 
     [self createKeyBoardNotification];
 
+
+}
+
+#pragma mark======发送图片=====
+- (void)packImage {
+
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:4 delegate:nil pushPhotoPickerVc:YES];
+    imagePickerVc.allowPickingImage = YES;
+    imagePickerVc.allowPickingOriginalPhoto = YES;
+    imagePickerVc.sortAscendingByModificationDate = YES;
+    imagePickerVc.showSelectBtn = NO;
+    imagePickerVc.allowCrop = YES;
+    imagePickerVc.needCircleCrop = YES;
+    imagePickerVc.circleCropRadius = 100;
+
+    __weak typeof (self) weekSelf = self;
+    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+        for (UIImage * image in photos) {
+            [weekSelf sendImageMessageWithImage:image];
+        }
+        
+    }];
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+    
 
 }
 
@@ -183,13 +227,12 @@
     [self scrollToLastPath];
 }
 
-- (void)sendImageMessage {
+- (void)sendImageMessageWithImage:(UIImage *)Image {
     MModel * model = [[MModel alloc] init];
     model.modelType = modelTypeSend;
     model.messageTpye = messageTypeImage;
     
-    UIImage * image = [UIImage imageNamed:@"tu.png"];
-    NSData * idata = UIImagePNGRepresentation(image);
+    NSData * idata = UIImagePNGRepresentation(Image);
     model.imageData = idata;
     
     [[Socket shareSocket] sentMessage:model progress:^(float progress) {

@@ -30,7 +30,7 @@
 - (void)initSocket{
     NSString * ip = [NetWorkIP getIpAddresses];
     if (ip.length) {
-       _socket = [Socket shareSocketWithHost:ip port:9800 messageBlack:^(NSData *message) {
+       _socket = [Socket shareSocketWithHost:@"192.168.1.103" port:9800 messageBlack:^(NSData *message) {
             DBLog(@"%@",[NSJSONSerialization JSONObjectWithData:message options:NSJSONReadingAllowFragments error:nil]);
         }];
         

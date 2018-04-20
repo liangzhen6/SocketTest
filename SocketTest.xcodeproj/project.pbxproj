@@ -259,9 +259,9 @@
 		FA8F09EC1E601E2D00AD3A3E /* SocketTest */ = {
 			isa = PBXGroup;
 			children = (
-				329649041E61C8D60097F288 /* Library */,
 				FA8F09F01E601E2D00AD3A3E /* AppDelegate.h */,
 				FA8F09F11E601E2D00AD3A3E /* AppDelegate.m */,
+				329649041E61C8D60097F288 /* Library */,
 				FACE7DF11E6578EF00030AB7 /* Tools */,
 				FACE7DED1E655BD200030AB7 /* Model */,
 				FA8F09F31E601E2D00AD3A3E /* ViewController.h */,

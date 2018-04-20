@@ -34,6 +34,7 @@ typedef  NS_ENUM(NSInteger,modelType){
 @property(nonatomic,copy)NSString * textMessage;
 @property(nonatomic,assign)float sendProgress;
 @property(nonatomic,strong)NSData * imageData;
+@property(nonatomic,strong)UIImage * Image;
 
 @property(nonatomic)NSInteger tag;
 
